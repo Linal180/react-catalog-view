@@ -32,7 +32,6 @@ function App() {
   const [slideDuration] = useState(3000)
 
   useEffect(() => {
-    console.log(slideTimer === 'on')
     if (slideTimer === 'on') {
       const interval = setInterval(() => {
         setActiveIndex(prev => prev === catalogs.length - 1 ? 0 : prev + 1)
@@ -77,7 +76,7 @@ function App() {
           <input
             type='checkbox'
             data-testid='toggle-slide-show-button'
-            onChange={({ target: { value } }) => setSlideTimer(value)}
+            onChange={() => setSlideTimer(prev => prev === 'on' ? 'off' : 'on')}
           />
           <label className='ml-6'>Start Slide Show</label>
         </div>
